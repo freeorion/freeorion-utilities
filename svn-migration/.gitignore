@@ -1,0 +1,11 @@
+# Files and directories that should be ignored
+
+# Ignore freeorion repository dump
+code
+freeorion.svnserve
+
+# Ignore svn2git subproject
+svn2git
+
+# Ignore kde-ruleset subproject
+kde-subproject

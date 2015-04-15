@@ -1,0 +1,173 @@
+# svn2git rule file to map the FreeOrion subversion repository
+# structure to the git repository structure
+
+# The FreeOrion application repository
+create repository freeorion
+end repository
+
+# The now defunct designer tools application
+create repository designertools
+end repository
+
+# Remove the old Windows SDK from the repository
+match /trunk/FreeOrion/WindowsKit.zip
+end match
+
+# Everything within the trunk should be used as the base
+match /trunk/FreeOrion/
+    repository freeorion
+    branch master
+end match
+
+# The python-integration branch created some broken commits, so
+# leave it out
+match /branches/python-integration/FreeOrion/
+end match
+
+# Migrate the networking-reimplementation branch
+match /branches/networking-reimplementation/FreeOrion/
+    repository freeorion
+    branch networking-reimplementation
+end match
+
+# Migrate the ogre-integration branch
+match /branches/ogre-integration/
+    repository freeorion
+    branch ogre-integration
+end match
+
+# Migrate the gigi-migration branch
+match /trunk/FreeOrion-GiGi-Fork/
+    repository freeorion
+    branch gigi-migration
+end match
+
+# Migrate the gigi-migration branch.
+# The history was split over serveral directories
+match /branches/FreeOrion-GiGi-Fork/
+    repository freeorion
+    branch gigi-migration
+end match
+
+# Migrate the release-0.4.4 branch
+match /branches/release-0.4.4/FreeOrion/
+    repository freeorion
+    branch release-0.4.4
+end match
+
+# Migrate the sdl-migration branch
+match /branches/SDL_Migration_And_Dependencies_Updates/
+    repository freeorion
+    branch sdl-migration
+end match
+
+# Migrate the colonization reimplementation branch
+match /branches/revised_colonization/FreeOrion/
+    repository freeorion
+    branch revised-colonization
+end match
+
+# Remove the RELEASE_V_0_1 tag, as it collides with the
+# RELEASE_V_0_1_INSTALLER tag
+match /tags/RELEASE_V_0_1/FreeOrion/
+end match
+
+# Migrate the v0.1 release tag
+match /tags/RELEASE_V_0_1_INSTALLER/FreeOrion/
+    repository freeorion
+    branch refs/tags/v0.1
+    annotated true
+end match
+
+# Remove the RELEASE_V_0_2 tag, as it collides with the
+# RELEASE_V_0_2_INSTALLER tag
+match /tags/RELEASE_V_0_2/FreeOrion/
+end match
+
+# Migrate the v0.2 release tag
+match /tags/RELEASE_V_0_2_INSTALLER/FreeOrion/
+    repository freeorion
+    branch refs/tags/v0.2
+    annotated true
+end match
+
+# Migrate the v0.3 release tag
+match /tags/RELEASE_V_0_3/FreeOrion/
+    repository freeorion
+    branch refs/tags/v0.3
+    annotated true
+end match
+
+# Migrate the v0.4.3 release tag
+match /tags/RELEASE_V_0_4_3/
+    repository freeorion
+    branch refs/tags/v0.4.3
+    annotated true
+end match
+
+# Migrate the v0.4.4 release tag
+match /tags/RELEASE_V_0_4_4/
+    repository freeorion
+    branch refs/tags/v0.4.4
+    annotated true
+end match
+
+# Skip this merge commit, as it creates invalid commits
+match /tags/RELEASE_V_0_4_4_RC1/
+    min revision 7431
+    max revision 7432
+end match
+
+# Migrate the v0.4.4-rc1 release tag
+match /tags/RELEASE_V_0_4_4_RC1/
+    repository freeorion
+    branch refs/tags/v0.4.4-rc1
+    annotated true
+end match
+
+# Migrate the v0.4.4-rc2 release tag
+match /tags/RELEASE_V_0_4_4_RC2/
+    repository freeorion
+    branch refs/tags/v0.4.4-rc2
+    annotated true
+end match
+
+# Migrate the v0.4.4-rc3 release tag
+match /tags/RELEASE_V_0_4_4_RC3/
+    repository freeorion
+    branch refs/tags/v0.4.4-rc3
+    annotated true
+end match
+
+# Migrate the v0.4.4-rc4 release tag
+match /tags/RELEASE_V_0_4_4_RC4/
+    repository freeorion
+    branch refs/tags/v0.4.4-rc4
+    annotated true
+end match
+
+# Remove this unused and empty tag
+match /tags/start/
+end match
+
+# Use this as a base for the designer tools repository
+match /trunk/DesignerTools/
+    repository designertools
+    branch master
+end match
+
+# Migrate the tzlaine branch
+match /branches/tzlaine/DesignerTools/
+    repository designertools
+    branch tzlaine
+end match
+
+# Migrate the python-integration branch
+match /branches/python-integration/DesignerTools/
+    repository designertools
+    branch python-integration
+end match
+
+# Ignore the CVSROOT scripts
+match /trunk/CVSROOT/
+end match
