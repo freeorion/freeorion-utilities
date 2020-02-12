@@ -1,3 +1,13 @@
+"""
+Reformat a translation file according the en file.
+
+Possible options:
+full: All keys from the english file will be added to result file.
+      Keys without translation will be added with english text. this mode is used for translation.
+small: only translated keys will be added to file. Save some space and remove untranslated entries.
+check: just check that all keys are valid. Executed inside both full and small commands.
+"""
+
 import os
 import re
 from argparse import ArgumentParser
@@ -269,7 +279,7 @@ def make_copy(source, dest=None, for_translation=True):
 
 
 if __name__ == "__main__":
-    parser = ArgumentParser()
+    parser = ArgumentParser(description=__doc__)
     parser.add_argument("command", help="full | small | check", choices=["full", "small", "check"])
     parser.add_argument("input")
     parser.add_argument("output", nargs="?")
