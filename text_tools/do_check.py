@@ -27,8 +27,3 @@ def check_all_langs():
 
 
 check_all_langs()
-#
-# source = 'j:/projects/freeorion/default/stringtables/ru2.txt'
-#
-#
-# make_copy(source, for_translation=False)
